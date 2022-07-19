@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <section class="col-sm-8">
+        <section class="col-sm-12">
             <p>Cancel Reservation</p>
 
             <table class="table table-responsive" id="table">
@@ -14,6 +14,7 @@
                     <th>Nights</th>
                     <th>Adults</th>
                     <th>Children</th>
+                    <th>Room Picture</th>
                     <th>Room Type</th>
                     <th>Arrival Date</th>
                     <th>Departure Date</th>
@@ -28,7 +29,22 @@
                             <td>{{ $res->nights }}</td>
                             <td>{{ $res->adults }}</td>
                             <td>{{ $res->children }}</td>
-                            <td style="text-transform: capitalize">{{ $res->room->room_type }}</td>
+                            <td>
+                                @if ($res->room)
+                                    <img src="{{ $res->room->room_picture }}" alt="Room Picture"
+                                        style="width: 100%; height: 30px; object-fit: contain">
+                                @else
+                                    Room Not Found Maybe Deleted
+                                @endif
+                            </td>
+                            <td style="text-transform: capitalize">
+                                @if ($res->room)
+                                    {{ $res->room->room_type }}
+                                @else
+                                    Room Not Found Maybe Deleted
+                                @endif
+                            </td>
+
                             <td>{{ $res->arrival_date }}</td>
                             <td>{{ $res->departure_date }}</td>
                             <td>
@@ -48,7 +64,5 @@
                 </tbody>
             </table>
         </section>
-
-        @include('includes.sidebar')
     </div>
 @endsection

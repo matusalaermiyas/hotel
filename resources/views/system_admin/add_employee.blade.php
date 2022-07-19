@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-        <section class="col-sm-8">
+        <section class="col-sm-9">
             <h1>Adding Employee</h1>
             <form action="{{ route('sa.add.employee') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -27,9 +27,9 @@
 
                 <div class="form-group">
                     <select name="job_title" id="job_title" class="form-control">
-                        <option value="reception" @if ($employee->job_title == 'reception') selected @endif>Reception</option>
-                        <option value="casher" @if ($employee->job_title == 'casher') selected @endif>Casher</option>
-                        <option value="manager" @if ($employee->job_title == 'manager') selected @endif>Manager</option>
+                        <option value="reception">Reception</option>
+                        <option value="casher">Casher</option>
+                        <option value="manager">Manager</option>
                     </select>
                 </div>
 
@@ -48,9 +48,9 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Add</button>
                 </div>
-
-
             </form>
         </section>
+
+        @include('includes.sidebar')
     </div>
 @endsection

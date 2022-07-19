@@ -33,8 +33,7 @@
                 <li class="list"><a href="{{ route('system_admin.terminate.employee') }}"
                         class="btn btn-primary">Terminate
                         Employee</a></li>
-                <li class="list"><a href="{{ route('system_admin.change.hotel.profile') }}"
-                        class="btn btn-primary">Change Hotel Profile</a></li>
+
                 <li class="reception-list"><a href="{{ route('auth.logout') }}" class="btn btn-primary">Logout</a></li>
 
             </ul>

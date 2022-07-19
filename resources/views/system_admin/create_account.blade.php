@@ -28,6 +28,6 @@
             </form>
         </section>
 
-
+        @include('includes.sidebar')
     </div>
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Report;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -21,6 +23,17 @@ class AuthController extends Controller
             Session::flash('error', 'Invalid username or password');
             return redirect()->back();
         }
+
+        if ($user['role'] == 'reception' || $user['role'] == 'casher') {
+            Report::create([
+                'role' => $user['role'],
+                'description' => 'Logged into the system',
+                'employee_id' => $user['employee_id']
+            ]);
+        }
+
+        if ($user['role'] != 'customer') session()->put('employee_id', $user->employee_id);
+
 
         session()->put('logged', true);
         session()->put('role', $user['role']);

@@ -35,8 +35,13 @@
                                 @endif
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('manager.approve.leave', $request->id) }}">Approve
-                                    Leave</a>
+                                @if ($request->approved)
+                                    <button class="btn btn-primary">Leave Approved</button>
+                                @else
+                                    <a class="btn btn-primary"
+                                        href="{{ route('manager.approve.leave', $request->id) }}">Approve
+                                        Leave</a>
+                                @endif
                             </td>
 
                         </tr>

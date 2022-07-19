@@ -11,27 +11,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-// ------------
+// ---
 
+// Authentication route needed for login, logout, and register functionalities
 Route::prefix('auth')->controller(AuthController::class)->group(function () {
-    Route::get('signin', 'signin')->name('auth.signin');
-    Route::get('signup', 'signup')->name('auth.signup');
+    Route::get('signin', 'signin')->name('auth.signin')->middleware('auth.if.logged');
+    Route::get('signup', 'signup')->name('auth.signup')->middleware('auth.if.logged');
     Route::post('signin', 'signin_post')->name('auth.signin.post');
     Route::post('signup', 'signup_post')->name('auth.signup.post');
     Route::get('logout', 'logout')->name('auth.logout');
 });
-//---------------------
 
+//---
 
+// Casher routes
 Route::prefix('casher')->controller(CasherController::class)->middleware('auth.casher')->group(function () {
     Route::get('/', 'dashboard')->name('casher.dashboard');
     Route::get('generate/report', 'generateReport')->name('casher.generate.report');
     Route::get('view/authorized/payroll', 'viewAuthorizedPayroll')->name('casher.view.authorized.payroll');
 });
 
-//--------------------
+//---
 
 
+// Hotel information routes
 Route::prefix('company')->controller(PageController::class)->group(function () {
     Route::get('about', 'about')->name('about');
     Route::get('gallery', 'gallery')->name('gallery');
@@ -43,12 +46,20 @@ Route::prefix('company')->controller(PageController::class)->group(function () {
     Route::get('rooms', 'rooms')->name('rooms');
 });
 
-// -------------
+// ---
 
+
+// Customer routes for room reservation
+Route::prefix('customer')->controller(CustomerController::class)->group(function () {
+    Route::post('reserve', [CustomerController::class, 'reserve'])->name('customer.reserve');
+    Route::post('reserve/finish', [CustomerController::class, 'reserve_post'])->name('customer.reserve.post');
+});
+
+// ---
+
+
+// Customer relalted reservations
 Route::prefix('customer')->controller(CustomerController::class)->middleware('auth.customer')->group(function () {
-    Route::post('/reserve', 'reserve')->name('customer.reserve');
-    Route::post('/reserve/finish', 'reserve_post')->name('customer.reserve.post');
-
     Route::get('dashboard', 'dashboard')->name('customer.dashboard');
     Route::get('reservations', 'reservations')->name('customer.reservations');
     Route::get('cancel/reservations', 'cancelReservations')->name('customer.cancel.reservations');
@@ -58,8 +69,9 @@ Route::prefix('customer')->controller(CustomerController::class)->middleware('au
     Route::put('update/reservation/{id}', 'updateReservationStore')->name('customer.put.reservation');
 });
 
-//---------------
-// TODO: Authorize payroll
+//---
+
+// Manager related routes
 Route::prefix('manager')->controller(ManagerController::class)->middleware('auth.manager')->group(function () {
     Route::get('/', 'dashboard')->name('manager.dashboard');
     Route::get('view/comments', 'viewComments')->name('manager.view.comments');
@@ -70,7 +82,9 @@ Route::prefix('manager')->controller(ManagerController::class)->middleware('auth
     Route::get('authorize/employee/payroll/{id}', 'authorizeEmployeePayroll')->name('manager.authorize.employee.payroll');
 });
 
-// --------------------------
+// ---
+
+// Reception related routes
 Route::prefix('reception')->controller(ReceptionController::class)->middleware('auth.reception')->group(function () {
     Route::get('/', 'dashboard')->name('reception.dashboard');
     Route::get('reservations', 'reservations')->name('reception.reservations');
@@ -88,9 +102,9 @@ Route::prefix('reception')->controller(ReceptionController::class)->middleware('
     Route::get('see/leave/result', 'seeLeaveResult')->name('reception.see.leave.result');
 });
 
-// -----------------
+// ---
 
-
+// System admin related routes
 Route::prefix('system-admin')->controller(SystemAdminController::class)->middleware('auth.sa')->group(function () {
     Route::get('/', 'dashboard')->name('system_admin.dashboard');
 
@@ -118,3 +132,4 @@ Route::prefix('system-admin')->controller(SystemAdminController::class)->middlew
     Route::get('create/employee/account', 'showCreateAccount')->name('sa.create.account');
     Route::post('create/employee/account/store', 'storeCreateAccount')->name('sa.create.account.store');
 });
+// ---

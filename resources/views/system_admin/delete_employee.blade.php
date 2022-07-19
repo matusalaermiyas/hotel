@@ -19,6 +19,7 @@
                     <th>Age</th>
                     <th>Office Telephone</th>
                     <th>Mobile Phone</th>
+                    <th>Profile</th>
                     <th>Job Title</th>
                     <th></th>
                 </thead>
@@ -35,6 +36,8 @@
                             <td>{{ $emp->age }}</td>
                             <td>{{ $emp->office_telephone }}</td>
                             <td>{{ $emp->mobile_phone }}</td>
+                            <td> <img src="{{ $emp->profile }}" alt="Employee Picture"
+                                    style="width: 100%; height: 40px; object-fit: contain"></td>
                             <td>{{ $emp->job_title }}</td>
                             <td>
                                 <a href="{{ route('sa.delete.employee', $emp->id) }}" class="btn btn-danger">Delete</a>

@@ -2,7 +2,8 @@
 
 namespace App\Http;
 
-use App\Http\Controllers\CasherController;
+use App\Http\Middleware\CasherMiddleware;
+use App\Http\Middleware\CheckIfLogged;
 use App\Http\Middleware\CustomerMiddleware;
 use App\Http\Middleware\ManagerMiddleware;
 use App\Http\Middleware\ReceptionMiddleware;
@@ -71,7 +72,8 @@ class Kernel extends HttpKernel
         'auth.manager' => ManagerMiddleware::class,
         'auth.sa' => SystemAdminMiddleware::class,
         'auth.reception' => ReceptionMiddleware::class,
-        'auth.casher' => CasherController::class,
-        'auth.customer' => CustomerMiddleware::class
+        'auth.casher' => CasherMiddleware::class,
+        'auth.customer' => CustomerMiddleware::class,
+        'auth.if.logged' => CheckIfLogged::class
     ];
 }

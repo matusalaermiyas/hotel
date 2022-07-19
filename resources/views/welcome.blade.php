@@ -4,8 +4,18 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="col-sm-4">
+    <style>
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 0px;
+            border-radius: 7px;
+            overflow: hidden;
+            padding: 10px;
+        }
+    </style>
+
+    <div class="row" style="margin-top: 10px">
+        <div class="col-sm-4 card">
             <form action="/customer/reserve" method="POST">
                 @csrf
                 <div class="form-group">
@@ -35,7 +45,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-5">
             <section data-aos="fade-up" data-aos-duration="1000">
                 <h1>Welcome to our hotel</h1>
                 <p>Magna a luctus lacinia, sem Lorem vestibulum neque ac onsectetuer Donec fermentum varius erat. Sed

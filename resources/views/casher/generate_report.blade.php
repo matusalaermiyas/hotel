@@ -4,18 +4,32 @@
 
 @section('content')
 
-    <style>
-        .reception-list {
-            margin-bottom: 20px;
-        }
-    </style>
-
-    <div class="row" style="margin-top: 50px">
+    <div class="row">
         <section class="col-sm-8">
-            <h1>Generate report</h1>
+            <h1 style="font-size: 15px">Casher Report</h1>
+
+            <table class="table table-responsive" id="table">
+                <thead>
+                    <th>Role</th>
+                    <th>Casher Id</th>
+                    <th>Description</th>
+                    <th>Occured At</th>
+                </thead>
+
+                <tbody>
+                    @foreach ($reports as $rep)
+                        <tr>
+                            <td>{{ $rep->role }}</td>
+                            <td>{{ $rep->employee_id }}</td>
+                            <td>{{ $rep->description }}</td>
+                            <td>{{ $rep->created_at }}</td>
+
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </section>
 
-        @include('includes.sidebar')
 
     </div>
 @endsection

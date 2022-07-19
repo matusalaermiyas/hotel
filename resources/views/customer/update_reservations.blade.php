@@ -28,7 +28,13 @@
                             <td>{{ $res->nights }}</td>
                             <td>{{ $res->adults }}</td>
                             <td>{{ $res->children }}</td>
-                            <td style="text-transform: capitalize">{{ $res->room->room_type }}</td>
+                            <td style="text-transform: capitalize">
+                                @if ($res->room)
+                                    {{ $res->room->room_type }}
+                                @else
+                                    Room Not Found Maybe Deleted
+                                @endif
+                            </td>
                             <td>{{ $res->arrival_date }}</td>
                             <td>{{ $res->departure_date }}</td>
                             <td>

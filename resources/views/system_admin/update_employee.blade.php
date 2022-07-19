@@ -5,10 +5,10 @@
 @section('content')
 
     <div class="row">
-        <section class="col-sm-8">
+        <section class="col-sm-12">
             <h1 style="font-size: 15px">Delete Employee</h1>
 
-            <table class="table" id="table">
+            <table class="table table-responsive" id="table">
                 <thead>
                     <th>ID</th>
                     <th>First Name</th>
@@ -19,6 +19,7 @@
                     <th>Age</th>
                     <th>Office Telephone</th>
                     <th>Mobile Phone</th>
+                    <th>Profile</th>
                     <th>Job Title</th>
                     <th></th>
                 </thead>
@@ -35,16 +36,17 @@
                             <td>{{ $emp->age }}</td>
                             <td>{{ $emp->office_telephone }}</td>
                             <td>{{ $emp->mobile_phone }}</td>
+                            <td> <img src="{{ $emp->profile }}" alt="Employee Picture"
+                                    style="width: 100%; height: 40px; object-fit: contain"></td>
                             <td>{{ $emp->job_title }}</td>
                             <td>
-                                <a href="{{ route('sa.update.form', $emp->id) }}" class="btn btn-danger">Update</a>
+                                <a href="{{ route('sa.update.form', $emp->id) }}" class="btn btn-primary">Update</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </section>
-
 
     </div>
 @endsection

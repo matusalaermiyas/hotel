@@ -33,9 +33,13 @@
                                 @endif
                             </td>
                             <td>
-                                <a class="btn btn-primary"
-                                    href="{{ route('manager.approve.comment', $comment->id) }}">Approve
-                                    Comment</a>
+                                @if ($comment->approved)
+                                    <button class="btn btn-primary">Approved</button>
+                                @else
+                                    <a class="btn btn-primary"
+                                        href="{{ route('manager.approve.comment', $comment->id) }}">Approve
+                                        Comment</a>
+                                @endif
                             </td>
 
                         </tr>

@@ -14,7 +14,7 @@
       }
   </style>
 
-  <div class="col-sm-4">
+  <div class="col-sm-2">
       <div class="sidebar-card" data-aos="fade-up" data-aos-duration="1000">
           <img src="/images/home/ayu.jpg" style="object-fit: cover" class="img-responsive">
           <p class="sidebar-card-content">Ayu</p>

@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payroll;
-use Illuminate\Http\Request;
+use App\Models\Report;
 
 class CasherController extends Controller
 {
     // - Generate Report
     // - View Authorized payroll
+
+    private $counter = 1;
+
+
+
     function dashboard()
     {
         return view('casher.dashboard');
@@ -16,11 +21,19 @@ class CasherController extends Controller
 
     function generateReport()
     {
-        return view('casher.generate_report');
+        $reports = Report::where('role', session()->get('role'))->get();
+
+        return view('casher.generate_report')->with('reports', $reports);
     }
 
     function viewAuthorizedPayroll()
     {
+        Report::create([
+            'role' => session()->get('role'),
+            'description' => 'View Authorized Payroll',
+            'employee_id' => session()->get('employee_id')
+        ]);
+
         $authorizedPayrolls = Payroll::all();
         return view('casher.view_authorized_payroll')->with('payrolls', $authorizedPayrolls);
     }
