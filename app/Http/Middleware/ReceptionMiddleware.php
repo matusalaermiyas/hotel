@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ReceptionMiddleware
 {
@@ -16,6 +17,11 @@ class ReceptionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!(Session::get('role') == 'reception')) {
+            Session::flash('error', 'You are not authorized to access the page');
+            return redirect()->route('auth.signin');
+        }
+
         return $next($request);
     }
 }

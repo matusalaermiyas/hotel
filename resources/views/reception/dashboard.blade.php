@@ -32,6 +32,8 @@
 
                 <li class="reception-list"><a href="{{ route('reception.generate.report') }}"
                         class="btn btn-primary">Generate Report</a></li>
+                <li class="reception-list"><a href="{{ route('auth.logout') }}" class="btn btn-primary">Logout</a></li>
+
             </ul>
         </section>
 

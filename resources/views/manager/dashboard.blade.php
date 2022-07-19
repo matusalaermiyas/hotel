@@ -20,6 +20,9 @@
                 </li>
                 <li class="list"><a href="{{ route('manager.authorize.payroll') }}" class="btn btn-primary">Authorize
                         Payroll</a></li>
+
+                <li class="reception-list"><a href="{{ route('auth.logout') }}" class="btn btn-primary">Logout</a></li>
+
             </ul>
         </section>
 

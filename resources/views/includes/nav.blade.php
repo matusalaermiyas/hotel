@@ -70,8 +70,8 @@
                 @endif
             @endif
 
-            <li><a href="{{ route('about') }}">About our Hotel</a></li>
             <li><a href="{{ route('rooms') }}">Rooms</a></li>
+            <li><a href="{{ route('about') }}">About our Hotel</a></li>
             <li><a href="{{ route('gallery') }}">Photogallery</a></li>
             <li><a href="{{ route('testimonials') }}">Testimonials</a></li>
             <li><a href="{{ route('locations') }}">Locations</a></li>

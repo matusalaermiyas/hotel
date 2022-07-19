@@ -6,7 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class CustomerMiddleware
+
+class CasherMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +18,7 @@ class CustomerMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!(Session::get('role') == 'customer')) {
+        if (!(Session::get('role') == 'casher')) {
             Session::flash('error', 'You are not authorized to access the page');
             return redirect()->route('auth.signin');
         }

@@ -2,7 +2,11 @@
 
 namespace App\Http;
 
+use App\Http\Controllers\CasherController;
+use App\Http\Middleware\CustomerMiddleware;
 use App\Http\Middleware\ManagerMiddleware;
+use App\Http\Middleware\ReceptionMiddleware;
+use App\Http\Middleware\SystemAdminMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -64,6 +68,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'auth.manager' => ManagerMiddleware::class
+        'auth.manager' => ManagerMiddleware::class,
+        'auth.sa' => SystemAdminMiddleware::class,
+        'auth.reception' => ReceptionMiddleware::class,
+        'auth.casher' => CasherController::class,
+        'auth.customer' => CustomerMiddleware::class
     ];
 }

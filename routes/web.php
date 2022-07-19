@@ -23,7 +23,7 @@ Route::prefix('auth')->controller(AuthController::class)->group(function () {
 //---------------------
 
 
-Route::prefix('casher')->controller(CasherController::class)->group(function () {
+Route::prefix('casher')->controller(CasherController::class)->middleware('auth.casher')->group(function () {
     Route::get('/', 'dashboard')->name('casher.dashboard');
     Route::get('generate/report', 'generateReport')->name('casher.generate.report');
     Route::get('view/authorized/payroll', 'viewAuthorizedPayroll')->name('casher.view.authorized.payroll');
@@ -45,7 +45,7 @@ Route::prefix('company')->controller(PageController::class)->group(function () {
 
 // -------------
 
-Route::prefix('customer')->controller(CustomerController::class)->group(function () {
+Route::prefix('customer')->controller(CustomerController::class)->middleware('auth.customer')->group(function () {
     Route::post('/reserve', 'reserve')->name('customer.reserve');
     Route::post('/reserve/finish', 'reserve_post')->name('customer.reserve.post');
 
@@ -71,7 +71,7 @@ Route::prefix('manager')->controller(ManagerController::class)->middleware('auth
 });
 
 // --------------------------
-Route::prefix('reception')->controller(ReceptionController::class)->group(function () {
+Route::prefix('reception')->controller(ReceptionController::class)->middleware('auth.reception')->group(function () {
     Route::get('/', 'dashboard')->name('reception.dashboard');
     Route::get('reservations', 'reservations')->name('reception.reservations');
     Route::get('book/reservation', 'bookReservation')->name('reception.reserve.book');
@@ -91,7 +91,7 @@ Route::prefix('reception')->controller(ReceptionController::class)->group(functi
 // -----------------
 
 
-Route::prefix('system-admin')->controller(SystemAdminController::class)->group(function () {
+Route::prefix('system-admin')->controller(SystemAdminController::class)->middleware('auth.sa')->group(function () {
     Route::get('/', 'dashboard')->name('system_admin.dashboard');
 
     Route::get('view/rooms', 'viewRooms')->name('sa.view.rooms');
