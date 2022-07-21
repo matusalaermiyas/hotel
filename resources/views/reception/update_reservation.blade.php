@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <section class="col-sm-10">
+        <section class="col-sm-12">
             <p>Customer reservations</p>
 
             <table class="table table-responsive" id="table">
@@ -13,6 +13,7 @@
                 <th>Nights</th>
                 <th>Adults</th>
                 <th>Children</th>
+                <th>Rooms</th>
                 <th>Room Picture</th>
                 <th>Room Type</th>
                 <th>Arrival Date</th>
@@ -28,6 +29,7 @@
                             <td>{{ $res->nights }}</td>
                             <td>{{ $res->adults }}</td>
                             <td>{{ $res->children }}</td>
+                            <td>{{ $res->rooms }}</td>
                             <td>
                                 @if ($res->room)
                                     <img src="{{ $res->room->room_picture }}" alt="Room Picture"
@@ -55,9 +57,13 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('reception.update.reservation', $res->id) }}"
-                                    class="btn btn-primary">Update
-                                    Reservation</a>
+                                @if ($res->reserved)
+                                    <button class="btn btn-primary">Room Reserved</button>
+                                @else
+                                    <a href="{{ route('reception.update.reservation', $res->id) }}"
+                                        class="btn btn-primary">Update
+                                        Reservation</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -65,6 +71,5 @@
             </table>
         </section>
 
-        @include('includes.sidebar')
     </div>
 @endsection

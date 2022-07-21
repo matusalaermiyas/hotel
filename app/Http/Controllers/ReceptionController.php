@@ -40,6 +40,9 @@ class ReceptionController extends Controller
     function cancelAReservation($id)
     {
         $reservation = Reservation::find($id);
+        $room = Room::find($reservation->room_id);
+
+        if ($reservation->reserved)  $room->update(['available_rooms' => ($room->available_rooms + $reservation->rooms)]);
 
         $reservation->delete();
 
@@ -104,9 +107,15 @@ class ReceptionController extends Controller
 
     function generateReport()
     {
-        $reports = Report::where('role', session()->get('role'))->get();
+        $numberOfReservedRooms = Reservation::where('reserved', 1)->get();
+        $rooms = Room::all();
 
-        return view('reception.generate_report')->with('reports', $reports);
+
+        // $reports = Report::where('role', session()->get('role'))->get();
+
+        return view('reception.generate_report')
+            ->with('number_of_reserved_rooms', count($numberOfReservedRooms))
+            ->with('rooms', count($rooms));
     }
 
     function bookReservation()
@@ -118,7 +127,19 @@ class ReceptionController extends Controller
     function bookAReservation($id)
     {
         $reception = Account::where('username', session()->get('username'))->first();
+
         $reservation = Reservation::find($id);
+        $room = Room::find($reservation->room_id);
+
+        if ($room->available_rooms <= 0) {
+            Session::flash('error', 'The Room User Selected Is All Taken');
+            return redirect()->back();
+        } else if ($room->available_rooms < $reservation->rooms) {
+            Session::flash('error', 'The number of rooms available are ' . $room->available_rooms . ' lower it');
+            return redirect()->route('reception.reserve.book');
+        }
+
+        $room->update(['available_rooms' => ($room->available_rooms - $reservation->rooms)]);
         $reservation->update(['reserved' => true]);
 
         Report::create([

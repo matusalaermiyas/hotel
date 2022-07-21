@@ -33,7 +33,7 @@
                             style="object-fit: cover; width: 100%; height: 350px">
 
                         <div class="card-content">
-                            <p>Price : {{ $r->price }} Birrr</p>
+                            <p>Price : {{ $r->price }} Birr</p>
                             <p>Room Type : <span class="cap">{{ $r->room_type }}</span></p>
                             <p>Floor Number : {{ $r->floor_no }}</p>
                         </div>

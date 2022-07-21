@@ -25,6 +25,10 @@
                 @include('includes.text_input', ['id' => 'details', 'label' => 'Details'])
                 @include('includes.text_input', ['id' => 'discount', 'label' => 'Discount'])
                 @include('includes.text_input', [
+                    'id' => 'available_rooms',
+                    'label' => 'Number Of Available Rooms',
+                ])
+                @include('includes.text_input', [
                     'id' => 'room_picture',
                     'label' => 'Room Picture',
                     'type' => 'file',

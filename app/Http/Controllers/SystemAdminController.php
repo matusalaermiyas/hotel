@@ -173,7 +173,8 @@ class SystemAdminController extends Controller
             'discount' => $request['discount'],
             'room_type' => $request['room_type'],
             'status' => 'free',
-            'room_picture' => $path
+            'room_picture' => $path,
+            'available_rooms' => $request['available_rooms']
         ]);
 
         Session::flash('success', 'Room Added Successfully');
@@ -219,7 +220,8 @@ class SystemAdminController extends Controller
             'discount' => $request['discount'],
             'room_type' => $request['room_type'],
             'status' => $request['status'],
-            'room_picture' => $path
+            'room_picture' => $path,
+            'available_rooms' => $request['available_rooms']
         ]);
 
         Session::flash('success', 'Room Updated Successfully');

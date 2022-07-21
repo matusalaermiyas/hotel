@@ -20,9 +20,9 @@ class CreateRoomsTable extends Migration
             $table->double('price');
             $table->string('floor_no');
             $table->string('max_guest');
-            $table->string('status');
-            $table->text('details');
+            $table->string('details');
             $table->text('discount')->nullable();
+            $table->integer('available_rooms')->default(1);
         });
     }
 

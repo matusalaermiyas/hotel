@@ -21,9 +21,17 @@ class CasherController extends Controller
 
     function generateReport()
     {
-        $reports = Report::where('role', session()->get('role'))->get();
+        $payrolls = Payroll::all();
 
-        return view('casher.generate_report')->with('reports', $reports);
+        $numberOfAuthPayrolls = count($payrolls);
+        $amount = 0;
+
+        foreach ($payrolls as $p) $amount += $p->salary;
+
+
+        return view('casher.generate_report')
+            ->with('amount', $amount)
+            ->with('number_of_authorized', $numberOfAuthPayrolls);
     }
 
     function viewAuthorizedPayroll()

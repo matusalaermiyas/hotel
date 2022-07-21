@@ -13,6 +13,7 @@
                     <th>Room No</th>
                     <th>Room Type</th>
                     <th>Room Picture</th>
+                    <th>Available Rooms</th>
                     <th>Price</th>
                     <th>Floor No</th>
                     <th>Maximum Guests Allowed</th>
@@ -32,6 +33,7 @@
                                     style="width: 100%; height: 30px; object-fit: contain">
 
                             </td>
+                            <td>{{ $room->available_rooms }}</td>
                             </td>
                             <td>{{ $room->price }}</td>
                             <td>{{ $room->floor_no }}</td>

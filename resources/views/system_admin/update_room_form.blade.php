@@ -52,6 +52,13 @@
                     'label' => 'Discount',
                     'value' => $room->discount,
                 ])
+
+                @include('includes.text_input', [
+                    'id' => 'available_rooms',
+                    'label' => 'Number Of Available Rooms',
+                    'value' => $room->available_rooms,
+                ])
+
                 @include('includes.text_input', [
                     'id' => 'room_picture',
                     'label' => 'Room Picture',

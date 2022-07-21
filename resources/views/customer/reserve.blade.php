@@ -13,18 +13,21 @@
                     <input type="hidden" name="rooms" value="{{ Session::get('rooms') }}">
                     <input type="hidden" name="adults" value="{{ Session::get('adults') }}">
                     <input type="hidden" name="children" value="{{ Session::get('children') }}">
-                    <input type="hidden" name="account_id" value="{{ $customer_id }}">
+                    <input type="hidden" name="account_id" value="{{ $account_id }}">
 
+                    @include('includes.text_input', [
+                        'id' => 'arrival_date',
+                        'label' => 'Arrival Date',
+                        'type' => 'date',
+                        'value' => $arrival_date,
+                    ])
 
-                    <div class="form-group">
-                        <label for="arrival_date">Arrival Date</label>
-                        <input type="date" name="arrival_date" class="form-control" value="{{ $arrival_date }}">
-                    </div>
+                    @include('includes.text_input', [
+                        'id' => 'departure_date',
+                        'label' => 'Departure Date',
+                        'type' => 'date',
+                    ])
 
-                    <div class="form-group">
-                        <label for="departure_date">Departure Date</label>
-                        <input type="date" name="departure_date" class="form-control">
-                    </div>
 
                     <div class="form-group">
                         <label for="arrival_date">Room Preferences</label>
@@ -41,10 +44,12 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="reservation_id">Reservation ID</label>
-                        <input type="text" name="reservation_id" class="form-control" value="{{ $reservation_key }}">
-                    </div>
+                    @include('includes.text_input', [
+                        'id' => 'reservation_id',
+                        'label' => 'Reservation ID',
+                        'type' => 'text',
+                        'value' => $reservation_key,
+                    ])
 
 
                     <div class="form-group">

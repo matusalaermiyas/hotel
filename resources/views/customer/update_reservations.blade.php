@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <section class="col-sm-8">
+        <section class="col-sm-12">
             <p>Your reservations</p>
 
             <table class="table table-responsive" id="table">
@@ -14,6 +14,7 @@
                     <th>Nights</th>
                     <th>Adults</th>
                     <th>Children</th>
+                    <th>Rooms</th>
                     <th>Room Type</th>
                     <th>Arrival Date</th>
                     <th>Departure Date</th>
@@ -28,6 +29,7 @@
                             <td>{{ $res->nights }}</td>
                             <td>{{ $res->adults }}</td>
                             <td>{{ $res->children }}</td>
+                            <td>{{ $res->rooms }}</td>
                             <td style="text-transform: capitalize">
                                 @if ($res->room)
                                     {{ $res->room->room_type }}
@@ -45,9 +47,13 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('customer.update.reservation', $res->id) }}"
-                                    class="btn btn-primary">Update
-                                    Reservation</a>
+                                @if ($res->reserved)
+                                    <button class="btn btn-primary">Room Reserved Cannot Update</button>
+                                @else
+                                    <a href="{{ route('customer.update.reservation', $res->id) }}"
+                                        class="btn btn-primary">Update
+                                        Reservation</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -55,6 +61,5 @@
             </table>
         </section>
 
-        @include('includes.sidebar')
     </div>
 @endsection

@@ -27,7 +27,7 @@ class CreateAccountsTable extends Migration
             $table->string('email')->nullable();
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('role');
+            $table->string('role')->default('customer');
         });
     }
 

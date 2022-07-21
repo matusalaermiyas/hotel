@@ -26,6 +26,10 @@
                 <li class="list"><a href="{{ route('system_admin.view.employees') }}" class="btn btn-primary">View
                         Employees
                     </a></li>
+                <li class="list"><a href="{{ route('sa.create.account') }}" class="btn btn-primary">Add (Create)
+                        Employee Account</a>
+                </li>
+
                 <li class="list"><a href="{{ route('system_admin.add.employee') }}" class="btn btn-primary">Add
                         Employee</a></li>
                 <li class="list"><a href="{{ route('system_admin.update.employee') }}" class="btn btn-primary">Update

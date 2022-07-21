@@ -18,27 +18,35 @@
         <div class="col-sm-4 card">
             <form action="/customer/reserve" method="POST">
                 @csrf
-                <div class="form-group">
-                    <label for="arrival_date">Arrival Date</label>
-                    <input type="date" name="arrival_date" class="form-control">
-                </div>
+                @include('includes.text_input', [
+                    'id' => 'arrival_date',
+                    'label' => 'Arrival Date',
+                    'type' => 'date',
+                ])
 
-                <div class="form-group">
-                    <label for="">Nights</label>
-                    <input type="number" name="nights" id="" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="">Rooms</label>
-                    <input type="number" name="rooms" id="" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="">Adults</label>
-                    <input type="number" name="adults" id="" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="">Childern</label>
-                    <input type="number" name="children" id="" class="form-control">
-                </div>
+                @include('includes.text_input', [
+                    'id' => 'nights',
+                    'label' => 'Nights',
+                    'type' => 'number',
+                ])
+
+                @include('includes.text_input', [
+                    'id' => 'rooms',
+                    'label' => 'Rooms',
+                    'type' => 'number',
+                ])
+
+                @include('includes.text_input', [
+                    'id' => 'adults',
+                    'label' => 'Adults',
+                    'type' => 'number',
+                ])
+                @include('includes.text_input', [
+                    'id' => 'children',
+                    'label' => 'Children',
+                    'type' => 'number',
+                ])
+
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Reserve</button>
