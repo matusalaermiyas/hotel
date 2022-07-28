@@ -62,7 +62,6 @@ class AuthController extends Controller
             'telephone' => 'required',
             'email' => 'required|email',
             'username' => 'required',
-            ''
         ]);
 
 
@@ -85,12 +84,41 @@ class AuthController extends Controller
         return redirect()->route('auth.signin');
     }
 
+    function changePassword()
+    {
+        return view('auth.change_password');
+    }
+
+    function changePasswordStore(Request $request)
+    {
+        $account = Account::where('username', session()->get('username'))->first();
+
+        if (!$account) return;
+
+        if ($account->password != $request['old_password']) {
+            Session::flash('error', 'The Password You Entered Is Incorrect');
+            return redirect()->route('auth.change.password');
+        } else if ($request['new_password'] != $request['confirm_password']) {
+            Session::flash('error', 'Password Confirmation Do Not Match');
+            return redirect()->route('auth.change.password');
+        }
+
+        if ($account->password != $request['new_password']) $account->update(['password' => $request['new_password']]);
+
+        Session::flash('success', 'Password Updated Successfully');
+        session()->remove('logged');
+        session()->remove('role');
+        session()->remove('username');
+
+        return redirect()->route('auth.signin');
+    }
+
     function logout()
     {
         session()->remove('logged');
         session()->remove('role');
         session()->remove('username');
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 }

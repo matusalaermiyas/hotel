@@ -9,13 +9,6 @@
                 <div class="alert alert-danger">
                     {{ $errors->all()[0] }}
                 </div>
-                {{-- <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div> --}}
             @endif
             <div class="col-sm-8">
                 <form action="{{ route('auth.signup.post') }}" method="POST">

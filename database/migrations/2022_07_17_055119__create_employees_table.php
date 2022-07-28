@@ -20,11 +20,11 @@ class CreateEmployeesTable extends Migration
             $table->string('last_name');
             $table->double('salary');
             $table->date('dob');
-            $table->integer('age');
             $table->string('office_telephone');
             $table->string('mobile_phone');
             $table->string('profile');
             $table->string('job_title');
+            $table->string('gender')->default('male');
             $table->timestamps();
         });
     }

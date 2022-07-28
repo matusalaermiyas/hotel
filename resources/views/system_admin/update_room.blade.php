@@ -28,7 +28,7 @@
                         <tr>
                             <td>{{ $room->id }}</td>
                             <td>{{ $room->room_type }}</td>
-                            <td> <img src="{{ $room->room_picture }}" alt="Room Picture"
+                            <td> <img src="{{ asset($room->room_picture) }}" alt="Room Picture"
                                     style="width: 100%; height: 50px; object-fit: contain"></td>
                             <td>{{ $room->available_rooms }}</td>
                             <td>{{ $room->price }}</td>

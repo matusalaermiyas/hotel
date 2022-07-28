@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="row" style="margin-top: 50px">
+    <div class="row">
         <section class="col-sm-8">
             <h1>Authroize Payroll</h1>
 
@@ -15,6 +15,8 @@
                     </div>
 
                     <div class="panel-body">
+                        <p>Name : {{ $e->first_name }}</p>
+                        <p>Job Title :{{ $e->job_title }}</p>
                         <p>Salary :{{ $e->salary }}</p>
                         <p>Action : <a href="{{ route('manager.authorize.employee.payroll', $e->id) }}"
                                 class="btn btn-primary">Authorize Payroll</a></p>

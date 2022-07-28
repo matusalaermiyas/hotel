@@ -5,7 +5,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Ayu Int Hotel</a>
+        <a class="navbar-brand" href="{{ route('home') }}">Ayu Int Hotel</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav pull-right">
@@ -71,6 +71,7 @@
             @endif
 
             <li><a href="{{ route('rooms') }}">Rooms</a></li>
+            <li><a href="{{ route('customer.get.direct.reservation') }}">Reserve Room</a></li>
             <li><a href="{{ route('about') }}">About our Hotel</a></li>
             <li><a href="{{ route('gallery') }}">Photogallery</a></li>
             <li><a href="{{ route('testimonials') }}">Testimonials</a></li>

@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\Session;
 
 class ManagerController extends Controller
 {
-    // - View comment
-    // - Permit Leave
-    // - Authorize payroll
     function dashboard()
     {
         return view('manager.dashboard');

@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/animate.min.css">
-    <link rel="stylesheet" href="/styles/aos/aos.css">
-    <link rel="stylesheet" href="/styles/jdt/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/styles/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/styles/aos/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('/styles/jdt/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/styles/style.css') }}">
     <title>@yield('title')</title>
 </head>
 
@@ -19,10 +19,11 @@
         @include('includes.message')
         @yield('content')
     </div>
-    <script src="/bootstrap/js/jquery.min.js"></script>
-    <script src="/styles/jdt/jquery.dataTables.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/styles/aos/aos.js"></script>
+    <script src="{{ asset('/bootstrap/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/styles/jdt/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/styles/aos/aos.js') }}"></script>
+
     <script>
         AOS.init()
     </script>

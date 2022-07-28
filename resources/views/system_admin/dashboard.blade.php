@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Ayu Hotel | Manager Dashboard')
+@section('title', 'Ayu Hotel | System Admin Dashboard')
 
 @section('content')
 

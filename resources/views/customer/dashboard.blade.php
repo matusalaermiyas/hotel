@@ -10,14 +10,13 @@
         }
     </style>
 
-    <div class="row" style="margin-top: 50px">
+    <div class="row">
         <section class="col-sm-8">
             <h1>Welcome Our Customer</h1>
             <ul class="list-unstyled">
                 <li class="reception-list"><a href="{{ route('customer.reservations') }}" class="btn btn-primary">My
                         Reservations</a></li>
-                <li class="reception-list"><a href="{{ route('customer.cancel.reservations') }}"
-                        class="btn btn-primary">Cancel
+                <li class="reception-list"><a href="{{ route('customer.cancel.reservations') }}" class="btn btn-primary">Cancel
                         Reservation</a></li>
                 <li class="reception-list"><a href="{{ route('customer.update.reservations') }}"
                         class="btn btn-primary">Update

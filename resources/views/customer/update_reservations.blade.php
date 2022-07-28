@@ -11,7 +11,6 @@
             <table class="table table-responsive" id="table">
                 <thead>
                     <th>Reservation ID</th>
-                    <th>Nights</th>
                     <th>Adults</th>
                     <th>Children</th>
                     <th>Rooms</th>
@@ -26,7 +25,6 @@
                     @foreach ($reservations as $res)
                         <tr>
                             <td>{{ $res->reservation_id }}</td>
-                            <td>{{ $res->nights }}</td>
                             <td>{{ $res->adults }}</td>
                             <td>{{ $res->children }}</td>
                             <td>{{ $res->rooms }}</td>

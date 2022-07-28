@@ -29,7 +29,7 @@
                 <h1>Our Rooms</h1>
                 @foreach ($rooms as $r)
                     <div class="card">
-                        <img src="{{ $r->room_picture }}" alt="Room Picture"
+                        <img src="{{ asset($r->room_picture) }}" alt="Room Picture"
                             style="object-fit: cover; width: 100%; height: 350px">
 
                         <div class="card-content">

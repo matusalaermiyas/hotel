@@ -6,7 +6,7 @@
 
     <div class="row">
         <section class="col-sm-8">
-            <h1 style="font-size: 15px">Casher Report</h1>
+            <h1 style="font-size: 15px">Reception Report</h1>
 
             <div class="panel panel-info">
                 <div class="panel-heading">

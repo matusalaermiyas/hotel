@@ -16,19 +16,19 @@
 
   <div class="col-sm-2">
       <div class="sidebar-card" data-aos="fade-up" data-aos-duration="1000">
-          <img src="/images/home/ayu.jpg" style="object-fit: cover" class="img-responsive">
+          <img src="{{ asset('/images/home/ayu.jpg') }}" style="object-fit: cover" class="img-responsive">
           <p class="sidebar-card-content">Ayu</p>
       </div>
       <div class="sidebar-card" data-aos="fade-up" data-aos-duration="1000">
-          <img src="/images/home/adama.jpg" class="img-responsive">
+          <img src="{{ asset('/images/home/adama.jpg') }}" class="img-responsive">
           <p class="sidebar-card-content">Adama</p>
       </div>
       <div class="sidebar-card" data-aos="fade-up" data-aos-duration="1000">
-          <img src="/images/home/city_center.jpg" alt="" class="img-responsive">
+          <img src="{{ asset('/images/home/city_center.jpg') }}" alt="" class="img-responsive">
           <p class="sidebar-card-content">City Center</p>
       </div>
       <div class="sidebar-card" data-aos="fade-up" data-aos-duration="1000">
-          <img src="/images/home/food.jpg" alt="" class="img-responsive">
+          <img src="{{ asset('/images/home/food.jpg') }}" alt="" class="img-responsive">
           <p class="sidebar-card-content">Foods</p>
       </div>
 

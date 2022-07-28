@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="row" style="margin-top: 50px">
+    <div class="row">
         <section class="col-sm-8">
 
             @foreach ($leaves as $l)
@@ -15,6 +15,12 @@
 
                     <div class="panel-body">
                         <p>Leave Reason : <span style="text-transform: capitalize">{{ $l->reason }}</span></p>
+
+                        @if ($l->other_details)
+                            <p>Leave Description : <span style="text-transform: capitalize">{{ $l->other_details }}</span>
+                            </p>
+                        @endif
+
                         <p>Result :
 
                             @if ($l->approved)

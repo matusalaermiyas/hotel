@@ -37,12 +37,8 @@
                     </select>
                 </div>
 
-                @include('includes.text_input', [
-                    'id' => 'nights',
-                    'label' => 'Nights',
-                    'value' => $reservation->nights,
-                    'type' => 'number',
-                ])
+
+
                 @include('includes.text_input', [
                     'id' => 'rooms',
                     'label' => 'Rooms',

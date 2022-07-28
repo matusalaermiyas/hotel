@@ -23,6 +23,7 @@ class CreateRoomsTable extends Migration
             $table->string('details');
             $table->text('discount')->nullable();
             $table->integer('available_rooms')->default(1);
+            $table->string('room_picture');
         });
     }
 

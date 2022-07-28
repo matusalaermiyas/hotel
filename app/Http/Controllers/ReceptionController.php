@@ -6,6 +6,7 @@ use App\Models\Account;
 use App\Models\Reservation;
 use App\Models\Room;
 use App\Models\Book;
+use App\Models\Employee;
 use App\Models\Leave;
 use App\Models\Report;
 use Illuminate\Http\Request;
@@ -14,11 +15,6 @@ use Illuminate\Support\Facades\Session;
 
 class ReceptionController extends Controller
 {
-    //  - Book Reservation
-    // - Cancel Reservation
-    // - Update Reservation
-    // - Generate Report   
-
     function dashboard()
     {
         return view('reception.dashboard');
@@ -91,7 +87,6 @@ class ReceptionController extends Controller
 
         $reservation->update([
             'room_id' => $request['room_id'],
-            'nights' => $request['nights'],
             'rooms' => $request['rooms'],
             'adults' => $request['adults'],
             'children' => $request['children'],
@@ -110,8 +105,6 @@ class ReceptionController extends Controller
         $numberOfReservedRooms = Reservation::where('reserved', 1)->get();
         $rooms = Room::all();
 
-
-        // $reports = Report::where('role', session()->get('role'))->get();
 
         return view('reception.generate_report')
             ->with('number_of_reserved_rooms', count($numberOfReservedRooms))
@@ -169,11 +162,31 @@ class ReceptionController extends Controller
     {
         $account = Account::where('username', session()->get('username'))->first();
 
+
+        if ($request['leave_date'] <  date('Y-m-d')) {
+            Session::flash('error', 'The Date You Entered Is Invalid');
+            return redirect()->route('reception.ask.leave');
+        } else if ($request['return_date'] < $request['leave_date']) {
+            Session::flash('error', 'The Date You Entered Is Invalid');
+            return redirect()->route('reception.ask.leave');
+        }
+
+        $employee = Employee::find($account['employee_id']);
+
+        if ($employee && $request['reason'] == 'pregnancy') {
+            if ($employee->gender == 'male') {
+                Session::flash('error', 'Male Cannot Have Pregnancy Leaves');
+                return redirect()->route('reception.ask.leave');
+            }
+        }
+
+
         Leave::create([
             'reason' => $request['reason'],
             'employee_id' => $account['employee_id'],
             'leave_date' => $request['leave_date'],
-            'return_date' => $request['return_date']
+            'return_date' => $request['return_date'],
+            'other_details' => $request['other_details']
         ]);
 
         Report::create([
@@ -191,10 +204,7 @@ class ReceptionController extends Controller
     {
         $account = Account::where('username', session()->get('username'))->first();
 
-
         $leaves = Leave::where('employee_id', $account['employee_id'])->get();
-
-
 
         return view('reception.leave_request_result')->with('leaves', $leaves);
     }

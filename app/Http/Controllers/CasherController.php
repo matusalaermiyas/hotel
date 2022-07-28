@@ -7,13 +7,6 @@ use App\Models\Report;
 
 class CasherController extends Controller
 {
-    // - Generate Report
-    // - View Authorized payroll
-
-    private $counter = 1;
-
-
-
     function dashboard()
     {
         return view('casher.dashboard');

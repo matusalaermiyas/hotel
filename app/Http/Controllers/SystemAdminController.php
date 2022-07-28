@@ -11,13 +11,6 @@ use Illuminate\Support\Str;
 
 class SystemAdminController extends Controller
 {
-    // - Add Room
-    // - Delete Room
-    // - Update Room
-    // - Add Employee
-    // - Update Employee
-    // - Terminate Employee
-    // - Change hotel profile
     function dashboard()
     {
         return view('system_admin.dashboard');
@@ -65,10 +58,7 @@ class SystemAdminController extends Controller
         return view('system_admin.update_employee')->with('employees', $employees);
     }
 
-    function changeHotelProfile()
-    {
-        return view('system_admin.change_hotel_profile');
-    }
+
 
     function viewEmployees()
     {
@@ -93,10 +83,10 @@ class SystemAdminController extends Controller
             'salary' => $request['salary'],
             'office_telephone' => $request['office_telephone'],
             'mobile_phone' => $request['mobile_phone'],
-            'age' => $request['age'],
             'job_title' => $request['job_title'],
             'dob' => $request['dob'],
-            'profile' => $path
+            'profile' => $path,
+            'gender' => $request['gender']
         ]);
 
 
@@ -108,7 +98,12 @@ class SystemAdminController extends Controller
     function deleteEmployee($id)
     {
         $employee = Employee::find($id);
-        $employee->delete();
+        $account = Account::where('employee_id', $employee->id)->first();
+
+        if ($employee) {
+            $employee->delete();
+            $account->delete();
+        }
 
         Session::flash('success', 'Employee Deleted Successfully');
 
@@ -125,6 +120,9 @@ class SystemAdminController extends Controller
     function updateEmployeeStore(Request $request, $id)
     {
         $employee = Employee::find($id);
+
+        if (!$employee) return redirect()->route('system_admin.dashboard');
+
         $path = $request['profile_picture'];
 
 
@@ -144,7 +142,6 @@ class SystemAdminController extends Controller
             'salary' => $request['salary'],
             'office_telephone' => $request['office_telephone'],
             'mobile_phone' => $request['mobile_phone'],
-            'age' => $request['age'],
             'job_title' => $request['job_title'],
             'dob' => $request['dob'],
             'profile' => $path
@@ -172,7 +169,6 @@ class SystemAdminController extends Controller
             'details' => $request['details'],
             'discount' => $request['discount'],
             'room_type' => $request['room_type'],
-            'status' => 'free',
             'room_picture' => $path,
             'available_rooms' => $request['available_rooms']
         ]);
@@ -185,7 +181,8 @@ class SystemAdminController extends Controller
     function deleteRoomPost($id)
     {
         $room = Room::find($id);
-        $room->delete();
+
+        if ($room) $room->delete();
 
         Session::flash('success', 'Room Deleted Successflly');
 
@@ -207,7 +204,7 @@ class SystemAdminController extends Controller
         if ($request->file('room_picture')) {
             $file_name = Str::random(10) . $request->file('room_picture')->getClientOriginalName();
             $destination = public_path() . '/images/room_pictures';
-            $request->file('room_pictures')->move($destination, $file_name);
+            $request->file('room_picture')->move($destination, $file_name);
 
             $path = '/images/room_pictures/' . $file_name;
         }
@@ -219,7 +216,6 @@ class SystemAdminController extends Controller
             'details' => $request['details'],
             'discount' => $request['discount'],
             'room_type' => $request['room_type'],
-            'status' => $request['status'],
             'room_picture' => $path,
             'available_rooms' => $request['available_rooms']
         ]);

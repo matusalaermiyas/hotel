@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <section class="col-sm-8">
+        <section class="col-sm-10">
             <h1 style="font-size: 15px">List Of Employees</h1>
 
             <table class="table" id="table">
@@ -16,7 +16,6 @@
                     <th>Last Name</th>
                     <th>Salary</th>
                     <th>Date Of Birth</th>
-                    <th>Age</th>
                     <th>Office Telephone</th>
                     <th>Mobile Phone</th>
                     <th>Job Title</th>
@@ -31,7 +30,6 @@
                             <td>{{ $emp->last_name }}</td>
                             <td>{{ $emp->salary }}</td>
                             <td>{{ $emp->dob }}</td>
-                            <td>{{ $emp->age }}</td>
                             <td>{{ $emp->office_telephone }}</td>
                             <td>{{ $emp->mobile_phone }}</td>
                             <td>{{ $emp->job_title }}</td>

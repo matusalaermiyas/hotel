@@ -18,7 +18,6 @@ class CreateReservationsTable extends Migration
             $table->string('account_id');
             $table->string('reservation_id');
             $table->string('room_id');
-            $table->integer('nights');
             $table->integer('rooms');
             $table->integer('adults');
             $table->integer('children');
@@ -26,6 +25,7 @@ class CreateReservationsTable extends Migration
             $table->date('departure_date');
             $table->boolean('reserved')->default(false);
             $table->timestamps();
+            $table->string('reservation_date');
         });
     }
 

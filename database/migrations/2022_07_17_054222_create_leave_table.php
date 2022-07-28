@@ -17,9 +17,11 @@ class CreateLeaveTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('reason');
+            $table->string('other_details')->nullable();
             $table->string('employee_id');
             $table->date('leave_date');
             $table->date('return_date');
+            $table->boolean('approved')->default(false);
         });
     }
 

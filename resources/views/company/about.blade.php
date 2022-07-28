@@ -19,7 +19,8 @@
             <section class="col-sm-8">
                 <h1>Our Services</h1>
                 <div class="card">
-                    <img src="/images/about/about_us.jpg" alt="About us" style="object-fit: cover" width="100%">
+                    <img src="{{ asset('/images/about/about_us.jpg') }}" alt="About us" style="object-fit: cover"
+                        width="100%">
                 </div>
                 <p style="margin-top: 10px">
                     Ayu hotel provides its customers with the highest standard of service and is committed to do that for

@@ -41,11 +41,7 @@
                     'value' => $room->details,
                 ])
 
-                @include('includes.text_input', [
-                    'id' => 'status',
-                    'label' => 'Status',
-                    'value' => $room->status,
-                ])
+
 
                 @include('includes.text_input', [
                     'id' => 'discount',

@@ -20,10 +20,7 @@
                     'id' => 'mobile_phone',
                     'label' => 'Mobile Telephone',
                 ])
-                @include('includes.text_input', [
-                    'id' => 'age',
-                    'label' => 'Age',
-                ])
+
 
                 <div class="form-group">
                     <select name="job_title" id="job_title" class="form-control">
@@ -45,6 +42,20 @@
                     'label' => 'Profile',
                     'type' => 'file',
                 ])
+
+                <div class="form-group">
+                    <p style="font-size: 14px; font-weight: bold">
+                        Gender
+
+                        <label>
+                            <input type="radio" name="gender" value="male">Male
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="female">Female
+                        </label>
+                    </p>
+                </div>
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Add</button>
                 </div>

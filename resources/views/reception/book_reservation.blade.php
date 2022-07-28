@@ -11,7 +11,6 @@
             <table class="table" id="table">
                 <thead>
                     <th>Reservation ID</th>
-                    <th>Nights</th>
                     <th>Adults</th>
                     <th>Children</th>
                     <th>Room Picture</th>
@@ -26,12 +25,11 @@
                     @foreach ($reservations as $res)
                         <tr>
                             <td>{{ $res->reservation_id }}</td>
-                            <td>{{ $res->nights }}</td>
                             <td>{{ $res->adults }}</td>
                             <td>{{ $res->children }}</td>
                             <td>
                                 @if ($res->room)
-                                    <img src="{{ $res->room->room_picture }}" alt="Room Picture"
+                                    <img src="{{ asset($res->room->room_picture) }}" alt="Room Picture"
                                         style="width: 100%; height: 30px; object-fit: contain">
                                 @else
                                     Room Not Found Maybe Deleted

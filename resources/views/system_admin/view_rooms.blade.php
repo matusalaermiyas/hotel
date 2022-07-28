@@ -17,7 +17,6 @@
                     <th>Price</th>
                     <th>Floor No</th>
                     <th>Maximum Guests Allowed</th>
-                    <th>Status</th>
                     <th>Details</th>
                     <th>Discount</th>
                 </thead>
@@ -29,7 +28,7 @@
                             <td>{{ $room->room_type }}</td>
                             <td>
 
-                                <img src="{{ $room->room_picture }}" alt="Room Picture"
+                                <img src="{{ asset($room->room_picture) }}" alt="Room Picture"
                                     style="width: 100%; height: 30px; object-fit: contain">
 
                             </td>
@@ -38,7 +37,6 @@
                             <td>{{ $room->price }}</td>
                             <td>{{ $room->floor_no }}</td>
                             <td>{{ $room->max_guest }}</td>
-                            <td>{{ $room->status }}</td>
                             <td>{{ $room->details }}</td>
                             <td>{{ $room->discount }}</td>
                         </tr>

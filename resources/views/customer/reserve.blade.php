@@ -9,11 +9,11 @@
                 <form action="{{ route('customer.reserve.post') }}" method="POST">
                     @csrf
 
-                    <input type="hidden" name="nights" value="{{ Session::get('nights') }}">
                     <input type="hidden" name="rooms" value="{{ Session::get('rooms') }}">
                     <input type="hidden" name="adults" value="{{ Session::get('adults') }}">
                     <input type="hidden" name="children" value="{{ Session::get('children') }}">
                     <input type="hidden" name="account_id" value="{{ $account_id }}">
+                    <input type="hidden" name="reservation_date" value="{{ $reservation_date }}">
 
                     @include('includes.text_input', [
                         'id' => 'arrival_date',

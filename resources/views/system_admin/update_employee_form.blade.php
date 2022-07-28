@@ -40,11 +40,6 @@
                     'label' => 'Mobile Telephone',
                     'value' => $employee->mobile_phone,
                 ])
-                @include('includes.text_input', [
-                    'id' => 'age',
-                    'label' => 'Age',
-                    'value' => $employee->age,
-                ])
 
                 <div class="form-group">
                     <select name="job_title" id="job_title" class="form-control">
